@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Ignore all migrations in the /Migrations directory
+*Charter/Charter/Migrations
+
+# Ignore all migrations in the /Data/Migrations directory
+*Charter/Charter/Data/Migrations
+
+ApiKeys.cs
