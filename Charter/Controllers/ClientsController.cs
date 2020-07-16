@@ -119,20 +119,22 @@ namespace Charter.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Clients/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteClient(int id)
         {
-            return View();
+            var clientToDelete = _context.clients.Where(s => s.ClientId == id).FirstOrDefault();
+            return View(clientToDelete);
         }
 
-        // POST: Clients/Delete/5
+        // POST: Captain/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteClient(int id, ClientsModel clientsModel)
         {
             try
             {
-                // TODO: Add delete logic here
+                var clientToDelete = _context.clients.Find(id);
+                _context.clients.Remove(clientToDelete);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
