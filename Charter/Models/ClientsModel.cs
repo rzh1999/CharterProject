@@ -10,19 +10,19 @@ namespace Charter.Models
     public class ClientsModel
     {
         [Key]
-        private int ClientId { get; set; }
+        public int ClientId { get; set; }
 
         [Display(Name = "First Name ")]
-        private string FirstName { get; set; }
+        public string FirstName { get; set; }
 
         [Display(Name = "Last Name ")]
-        private string LastName { get; set; }
+        public string LastName { get; set; }
 
         [Display(Name = "Email Address ")]
-        private string EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
         [Display(Name = "Telephone ")]
-        private string Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [ForeignKey("AddressId")]
         public int? AddressId { get; set; }

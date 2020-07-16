@@ -10,7 +10,7 @@ namespace Charter.ActionFilters
 {
     public class GlobalRouting : IActionFilter
     {
-        private readonly ClaimsPrincipal _claimsPrincipal;
+        public readonly ClaimsPrincipal _claimsPrincipal;
         public GlobalRouting(ClaimsPrincipal claimsPrincipal)
         {
             _claimsPrincipal = claimsPrincipal;

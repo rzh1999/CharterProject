@@ -10,16 +10,16 @@ namespace Charter.Models
     public class BaitsModel
     {
         [Key]
-        private int BaitId { get; set; }
+        public int BaitId { get; set; }
 
         [Display(Name = "Bait Type ")]
-        private string BaitType { get; set; }
+        public string BaitType { get; set; }
 
         [Display(Name = "Cost ")]
-        private double BaitCost { get; set; }
+        public double BaitCost { get; set; }
 
         [Display(Name = "Death Count ")]
-        private int DeathCount { get; set; }
+        public int DeathCount { get; set; }
 
         [ForeignKey("CaptainId")]
         public int? CaptainId { get; set; }

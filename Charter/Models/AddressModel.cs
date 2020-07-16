@@ -9,18 +9,18 @@ namespace Charter.Models
     public class AddressModel
     {
         [Key]
-        private int AddressId { get; set; }
+        public int AddressId { get; set; }
 
         [Display(Name = "Address ")]
-        private string Address { get; set; }
+        public string Address { get; set; }
 
         [Display(Name = "City ")]
-        private string City { get; set; }
+        public string City { get; set; }
 
         [Display(Name = "State ")]
-        private string State { get; set; }
+        public string State { get; set; }
 
         [Display(Name = "Zip Code ")]
-        private string ZipCode { get; set; }
+        public string ZipCode { get; set; }
     }
 }

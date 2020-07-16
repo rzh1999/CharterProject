@@ -20,11 +20,11 @@ namespace Charter.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        public readonly SignInManager<IdentityUser> _signInManager;
+        public readonly UserManager<IdentityUser> _userManager;
+        public readonly ILogger<RegisterModel> _logger;
+        public readonly IEmailSender _emailSender;
+        public readonly RoleManager<IdentityRole> _roleManager;
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,

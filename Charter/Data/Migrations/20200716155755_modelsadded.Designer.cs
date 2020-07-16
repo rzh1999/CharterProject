@@ -4,224 +4,22 @@ using Charter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Charter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200716155755_modelsadded")]
+    partial class modelsadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Charter.Models.AddressModel", b =>
-                {
-                    b.Property<int>("AddressId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AddressId");
-
-                    b.ToTable("address");
-                });
-
-            modelBuilder.Entity("Charter.Models.BaitsModel", b =>
-                {
-                    b.Property<int>("BaitId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("BaitCost")
-                        .HasColumnType("float");
-
-                    b.Property<string>("BaitType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaptainsModelCaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DeathCount")
-                        .HasColumnType("int");
-
-                    b.HasKey("BaitId");
-
-                    b.HasIndex("CaptainsModelCaptainId");
-
-                    b.ToTable("baits");
-                });
-
-            modelBuilder.Entity("Charter.Models.BoatsModel", b =>
-                {
-                    b.Property<int>("BoatId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BoatMake")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaptainsModelCaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Engine")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EngineHours")
-                        .HasColumnType("int");
-
-                    b.Property<double>("FuelCapacity")
-                        .HasColumnType("float");
-
-                    b.Property<double>("GasCotst")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("InsuranceId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("InsurancesModelInsuranceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsageAmountHours")
-                        .HasColumnType("int");
-
-                    b.HasKey("BoatId");
-
-                    b.HasIndex("CaptainsModelCaptainId");
-
-                    b.HasIndex("InsurancesModelInsuranceId");
-
-                    b.ToTable("boats");
-                });
-
-            modelBuilder.Entity("Charter.Models.CaptainsModel", b =>
-                {
-                    b.Property<int>("CaptainId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BusinessName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CaptainId");
-
-                    b.HasIndex("IdentityUserId");
-
-                    b.ToTable("captains");
-                });
-
-            modelBuilder.Entity("Charter.Models.ClientsModel", b =>
-                {
-                    b.Property<int>("ClientId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AddressModelAddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaptainsModelCaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telephone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClientId");
-
-                    b.HasIndex("AddressModelAddressId");
-
-                    b.HasIndex("CaptainsModelCaptainId");
-
-                    b.ToTable("clients");
-                });
-
-            modelBuilder.Entity("Charter.Models.InsurancesModel", b =>
-                {
-                    b.Property<int>("InsuranceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("AmountDue")
-                        .HasColumnType("float");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("InsuranceId");
-
-                    b.ToTable("insurances");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -252,15 +50,15 @@ namespace Charter.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "252c55d8-c3ee-43fc-b284-a3baa6a9fc17",
-                            ConcurrencyStamp = "0014e887-6dde-4f3b-9f0e-afc20e55cd45",
+                            Id = "51008f8a-dce2-414c-abde-c2cafed7e39c",
+                            ConcurrencyStamp = "6df5d667-b0e2-448d-81f3-3602fe0bdb72",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "779f3218-919a-4f53-84d5-aa0df1eaeb5e",
-                            ConcurrencyStamp = "91576450-11d9-4eb3-87b2-7c7f8d17966b",
+                            Id = "ca9ff310-ebeb-4e51-b05a-f7c3b92c3511",
+                            ConcurrencyStamp = "8e706753-84c6-4863-9757-ded54f9838c1",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         });
@@ -433,42 +231,6 @@ namespace Charter.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Charter.Models.BaitsModel", b =>
-                {
-                    b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
-                        .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
-                });
-
-            modelBuilder.Entity("Charter.Models.BoatsModel", b =>
-                {
-                    b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
-                        .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
-
-                    b.HasOne("Charter.Models.InsurancesModel", "InsurancesModel")
-                        .WithMany()
-                        .HasForeignKey("InsurancesModelInsuranceId");
-                });
-
-            modelBuilder.Entity("Charter.Models.CaptainsModel", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-                });
-
-            modelBuilder.Entity("Charter.Models.ClientsModel", b =>
-                {
-                    b.HasOne("Charter.Models.AddressModel", "AddressModel")
-                        .WithMany()
-                        .HasForeignKey("AddressModelAddressId");
-
-                    b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
-                        .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

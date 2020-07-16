@@ -10,28 +10,28 @@ namespace Charter.Models
     public class BoatsModel
     {
         [Key]
-        private int BoatId { get; set; }
+        public int BoatId { get; set; }
 
         [Display(Name = "Make ")]
-        private string BoatMake { get; set; }
+        public string BoatMake { get; set; }
 
         [Display(Name = "Model ")]
-        private string Model { get; set; }
+        public string Model { get; set; }
 
         [Display(Name = "Engine ")]
-        private string Engine { get; set; }
+        public string Engine { get; set; }
 
         [Display(Name = "Engine Hours ")]
-        private int EngineHours { get; set; }
+        public int EngineHours { get; set; }
 
         [Display(Name = "Usage Amount ")]
-        private int UsageAmountHours { get; set; }
+        public int UsageAmountHours { get; set; }
 
         [Display(Name = "Gas Costs ")]
-        private double GasCotst { get; set; }
+        public double GasCotst { get; set; }
 
         [Display(Name = "Fuel Capacity ")]
-        private double FuelCapacity { get; set; }
+        public double FuelCapacity { get; set; }
 
         [ForeignKey("CaptainId")]
 
