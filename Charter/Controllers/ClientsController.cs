@@ -1,26 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Charter.Data;
+using Charter.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Charter.Controllers
 {
+
     [Authorize(Roles = "Captain")]
-
-    private ApplicationDbContext _context;
-
-    public CaptainsController(ApplicationDbContext context)
-    {
-        _context = context;
-    }
+    
     public class ClientsController : Controller
     {
+
+        private ApplicationDbContext _context;
+
+        public ClientsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: Clients
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+
+                var client = _context.clients.ToList();
+                if (client == null)
+                {
+                    return RedirectToAction("CreateClient");
+                }
+
+                return View(client);
+            }
+            catch
+            {
+                return RedirectToAction("CreateClient");
+            }
         }
 
         // GET: Clients/Details/5
@@ -29,20 +49,25 @@ namespace Charter.Controllers
             return View();
         }
 
-        // GET: Clients/Create
-        public ActionResult Create()
+        public ActionResult CreateClient()
         {
-            return View();
+            ClientsModel clientsModel = new ClientsModel();
+            AddressModel addressModel = new AddressModel();
+            return View(clientsModel);
         }
 
-        // POST: Clients/Create
+        // POST: Captain/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateClient(ClientsModel clientsModel, AddressModel addressModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                //_context.address.Add(addressModel);
+                //_context.SaveChanges();
+                //clientsModel.AddressId = addressModel.AddressId;
+                _context.clients.Add(clientsModel);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
