@@ -8,6 +8,7 @@ using Charter.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Charter.Controllers
 {
@@ -75,43 +76,66 @@ namespace Charter.Controllers
             }
         }
 
-        // GET: Captain/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> EditCaptain(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.captains.FindAsync(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
         }
 
-        // POST: Captain/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> EditCaptain(int id, CaptainsModel captainsModel)
         {
-            try
+            if (id != captainsModel.CaptainId)
             {
-                // TODO: Add update logic here
+                return NotFound();
+            }
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                try
+                {
+                    _context.Update(captainsModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                }
+                return RedirectToAction("Index");
             }
+
+            // return View(captainsModel);
+            return RedirectToAction("Index");
         }
 
         // GET: Captain/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteCaptain(int id)
         {
-            return View();
+            var captainToDelete = _context.captains.Where(s => s.CaptainId == id).FirstOrDefault();
+            return View(captainToDelete);
         }
 
         // POST: Captain/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteCaptain(int id, CaptainsModel captainsModel)
         {
             try
             {
-                // TODO: Add delete logic here
+                var captainToDelete = _context.captains.Find(id);
+                _context.captains.Remove(captainToDelete);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
