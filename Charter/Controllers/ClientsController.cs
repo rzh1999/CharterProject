@@ -47,7 +47,8 @@ namespace Charter.Controllers
         // GET: Clients/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var client = _context.clients.Where(h => h.ClientId == id).SingleOrDefault();
+            return View(client);
         }
 
         public ActionResult CreateClient()
