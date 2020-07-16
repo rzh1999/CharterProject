@@ -43,11 +43,7 @@ namespace Charter.Controllers
             }
         }
 
-        // GET: Captain/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+       
 
         // GET: Captain/Create
         public ActionResult CreateCaptain()
