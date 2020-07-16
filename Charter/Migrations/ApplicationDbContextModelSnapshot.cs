@@ -4,16 +4,14 @@ using Charter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Charter.Data.Migrations
+namespace Charter.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200716161356_dbsetsadded")]
-    partial class dbsetsadded
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,6 +146,9 @@ namespace Charter.Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Lattitude")
+                        .HasColumnType("float");
+
                     b.Property<double>("Longitude")
                         .HasColumnType("float");
 
@@ -254,15 +255,15 @@ namespace Charter.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "252c55d8-c3ee-43fc-b284-a3baa6a9fc17",
-                            ConcurrencyStamp = "0014e887-6dde-4f3b-9f0e-afc20e55cd45",
+                            Id = "1fa318fe-2aae-4732-bdbf-d1eb51fe291c",
+                            ConcurrencyStamp = "f3980570-9c77-4c2b-a71b-21178204eb6b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "779f3218-919a-4f53-84d5-aa0df1eaeb5e",
-                            ConcurrencyStamp = "91576450-11d9-4eb3-87b2-7c7f8d17966b",
+                            Id = "a0ae6cbd-1254-4511-a3fb-48d546dc344b",
+                            ConcurrencyStamp = "654fc726-f442-43de-a95f-a064007f3440",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         });

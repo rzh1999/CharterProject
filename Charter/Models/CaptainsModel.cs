@@ -35,7 +35,7 @@ namespace Charter.Models
         public string ZipCode { get; set; }
 
         [Display(Name = "Lattitude ")]
-        public double Lattitude;
+        public double Lattitude { get; set; }
 
         [Display(Name = "Longitude ")]
         public double Longitude { get; set; }
