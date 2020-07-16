@@ -8,6 +8,7 @@ using Charter.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Charter.Controllers
 {
@@ -52,20 +53,18 @@ namespace Charter.Controllers
         public ActionResult CreateClient()
         {
             ClientsModel clientsModel = new ClientsModel();
-            AddressModel addressModel = new AddressModel();
+           
             return View(clientsModel);
         }
 
         // POST: Captain/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateClient(ClientsModel clientsModel, AddressModel addressModel)
+        public ActionResult CreateClient(ClientsModel clientsModel)
         {
             try
             {
-                //_context.address.Add(addressModel);
-                //_context.SaveChanges();
-                //clientsModel.AddressId = addressModel.AddressId;
+                
                 _context.clients.Add(clientsModel);
                 _context.SaveChanges();
 
@@ -77,27 +76,47 @@ namespace Charter.Controllers
             }
         }
 
-        // GET: Clients/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> EditClient(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.clients.FindAsync(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
         }
 
-        // POST: Clients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> EditClient(int id, ClientsModel clientsModel)
         {
-            try
+            if (id != clientsModel.ClientId)
             {
-                // TODO: Add update logic here
+                return NotFound();
+            }
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                try
+                {
+                    _context.Update(clientsModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                }
+                return RedirectToAction("Index");
             }
+
+            // return View(captainsModel);
+            return RedirectToAction("Index");
         }
 
         // GET: Clients/Delete/5
