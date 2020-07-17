@@ -211,6 +211,24 @@ namespace Charter.Migrations
                     b.ToTable("insurances");
                 });
 
+            modelBuilder.Entity("Charter.Models.MessagesModel", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ScreenName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("messages");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -240,17 +258,24 @@ namespace Charter.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "58baf82d-f5a4-44cb-b49e-84952dcb11bf",
-                            ConcurrencyStamp = "698b5094-6781-423f-bba2-845bb6ab06d1",
+                            Id = "86600202-bffd-4de0-a104-721694e1a2c0",
+                            ConcurrencyStamp = "40cd2925-e743-4ab9-ba6c-c1b9c1923864",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "df1140da-b038-43e2-96bc-dde0997c8296",
-                            ConcurrencyStamp = "1b8765d5-ed89-4f79-9cdd-04e8bf68c2d4",
+                            Id = "78e4a234-becc-437e-ab40-1dd240c25ad4",
+                            ConcurrencyStamp = "8c4455cc-a4ab-4695-a3a8-d69625b5293a",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
+                        },
+                        new
+                        {
+                            Id = "d0037468-0440-4b3c-b7c7-0e53131effa9",
+                            ConcurrencyStamp = "c6d53d59-b774-4fbf-857f-363de6eb096d",
+                            Name = "Client",
+                            NormalizedName = "CLIENT"
                         });
                 });
 

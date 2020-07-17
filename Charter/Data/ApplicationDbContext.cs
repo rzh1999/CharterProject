@@ -29,8 +29,14 @@ namespace Charter.Data
             {
                 Name = "Captain",
                 NormalizedName = "CAPTAIN"
+            },
+            new IdentityRole
+            {
+                Name = "Client",
+                NormalizedName = "CLIENT"
             }
             );
+
         }
 
         public DbSet<AddressModel> address { get; set; }
@@ -39,6 +45,7 @@ namespace Charter.Data
         public DbSet<CaptainsModel> captains { get; set; }
         public DbSet<ClientsModel> clients { get; set; }
         public DbSet<InsurancesModel> insurances { get; set; }
+        public DbSet<MessagesModel> messages { get; set; }
 
-            }
+    }
 }

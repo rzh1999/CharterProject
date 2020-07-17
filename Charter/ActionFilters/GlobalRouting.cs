@@ -25,7 +25,11 @@ namespace Charter.ActionFilters
                     context.Result = new RedirectToActionResult("Index",
                     "Captains", null);
                 }
-               
+                if (_claimsPrincipal.IsInRole("Client"))
+                {
+                    context.Result = new RedirectToActionResult("Index",
+                    "Clients", null);
+                }
             }
         }
 
