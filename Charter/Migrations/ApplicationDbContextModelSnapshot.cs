@@ -59,15 +59,12 @@ namespace Charter.Migrations
                     b.Property<int?>("CaptainId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CaptainsModelCaptainId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DeathCount")
                         .HasColumnType("int");
 
                     b.HasKey("BaitId");
 
-                    b.HasIndex("CaptainsModelCaptainId");
+                    b.HasIndex("CaptainId");
 
                     b.ToTable("baits");
                 });
@@ -85,9 +82,6 @@ namespace Charter.Migrations
                     b.Property<int?>("CaptainId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CaptainsModelCaptainId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Engine")
                         .HasColumnType("nvarchar(max)");
 
@@ -103,9 +97,6 @@ namespace Charter.Migrations
                     b.Property<int?>("InsuranceId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InsurancesModelInsuranceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
@@ -114,9 +105,9 @@ namespace Charter.Migrations
 
                     b.HasKey("BoatId");
 
-                    b.HasIndex("CaptainsModelCaptainId");
+                    b.HasIndex("CaptainId");
 
-                    b.HasIndex("InsurancesModelInsuranceId");
+                    b.HasIndex("InsuranceId");
 
                     b.ToTable("boats");
                 });
@@ -175,13 +166,7 @@ namespace Charter.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AddressModelAddressId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CaptainId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaptainsModelCaptainId")
                         .HasColumnType("int");
 
                     b.Property<string>("EmailAddress")
@@ -198,9 +183,9 @@ namespace Charter.Migrations
 
                     b.HasKey("ClientId");
 
-                    b.HasIndex("AddressModelAddressId");
+                    b.HasIndex("AddressId");
 
-                    b.HasIndex("CaptainsModelCaptainId");
+                    b.HasIndex("CaptainId");
 
                     b.ToTable("clients");
                 });
@@ -255,15 +240,15 @@ namespace Charter.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1fa318fe-2aae-4732-bdbf-d1eb51fe291c",
-                            ConcurrencyStamp = "f3980570-9c77-4c2b-a71b-21178204eb6b",
+                            Id = "58baf82d-f5a4-44cb-b49e-84952dcb11bf",
+                            ConcurrencyStamp = "698b5094-6781-423f-bba2-845bb6ab06d1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a0ae6cbd-1254-4511-a3fb-48d546dc344b",
-                            ConcurrencyStamp = "654fc726-f442-43de-a95f-a064007f3440",
+                            Id = "df1140da-b038-43e2-96bc-dde0997c8296",
+                            ConcurrencyStamp = "1b8765d5-ed89-4f79-9cdd-04e8bf68c2d4",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         });
@@ -442,18 +427,18 @@ namespace Charter.Migrations
                 {
                     b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
                         .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
+                        .HasForeignKey("CaptainId");
                 });
 
             modelBuilder.Entity("Charter.Models.BoatsModel", b =>
                 {
                     b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
                         .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
+                        .HasForeignKey("CaptainId");
 
                     b.HasOne("Charter.Models.InsurancesModel", "InsurancesModel")
                         .WithMany()
-                        .HasForeignKey("InsurancesModelInsuranceId");
+                        .HasForeignKey("InsuranceId");
                 });
 
             modelBuilder.Entity("Charter.Models.CaptainsModel", b =>
@@ -467,11 +452,11 @@ namespace Charter.Migrations
                 {
                     b.HasOne("Charter.Models.AddressModel", "AddressModel")
                         .WithMany()
-                        .HasForeignKey("AddressModelAddressId");
+                        .HasForeignKey("AddressId");
 
                     b.HasOne("Charter.Models.CaptainsModel", "CaptainsModel")
                         .WithMany()
-                        .HasForeignKey("CaptainsModelCaptainId");
+                        .HasForeignKey("CaptainId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

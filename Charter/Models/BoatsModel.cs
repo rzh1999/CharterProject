@@ -33,12 +33,12 @@ namespace Charter.Models
         [Display(Name = "Fuel Capacity ")]
         public double FuelCapacity { get; set; }
 
-        [ForeignKey("CaptainId")]
+        [ForeignKey("CaptainsModel")]
 
         public int? CaptainId { get; set; }
         public CaptainsModel CaptainsModel { get; set; }
 
-        [ForeignKey("InsuranceId")]
+        [ForeignKey("InsurancesModel")]
 
         public int? InsuranceId { get; set; }
         public InsurancesModel InsurancesModel { get; set; }

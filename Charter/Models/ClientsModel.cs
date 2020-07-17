@@ -24,11 +24,11 @@ namespace Charter.Models
         [Display(Name = "Telephone ")]
         public string Telephone { get; set; }
 
-        [ForeignKey("AddressId")]
+        [ForeignKey("AddressModel")]
         public int? AddressId { get; set; }
         public AddressModel AddressModel { get; set; }
 
-        [ForeignKey("CaptainId")]
+        [ForeignKey("CaptainsModel")]
         public int? CaptainId { get; set; }
         public CaptainsModel CaptainsModel { get; set; }
     }

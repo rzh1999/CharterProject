@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Charter.Migrations
 {
-    public partial class addedgetsettolongitude : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -220,15 +220,14 @@ namespace Charter.Migrations
                     BaitType = table.Column<string>(nullable: true),
                     BaitCost = table.Column<double>(nullable: false),
                     DeathCount = table.Column<int>(nullable: false),
-                    CaptainId = table.Column<int>(nullable: true),
-                    CaptainsModelCaptainId = table.Column<int>(nullable: true)
+                    CaptainId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_baits", x => x.BaitId);
                     table.ForeignKey(
-                        name: "FK_baits_captains_CaptainsModelCaptainId",
-                        column: x => x.CaptainsModelCaptainId,
+                        name: "FK_baits_captains_CaptainId",
+                        column: x => x.CaptainId,
                         principalTable: "captains",
                         principalColumn: "CaptainId",
                         onDelete: ReferentialAction.Restrict);
@@ -248,22 +247,20 @@ namespace Charter.Migrations
                     GasCotst = table.Column<double>(nullable: false),
                     FuelCapacity = table.Column<double>(nullable: false),
                     CaptainId = table.Column<int>(nullable: true),
-                    CaptainsModelCaptainId = table.Column<int>(nullable: true),
-                    InsuranceId = table.Column<int>(nullable: true),
-                    InsurancesModelInsuranceId = table.Column<int>(nullable: true)
+                    InsuranceId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_boats", x => x.BoatId);
                     table.ForeignKey(
-                        name: "FK_boats_captains_CaptainsModelCaptainId",
-                        column: x => x.CaptainsModelCaptainId,
+                        name: "FK_boats_captains_CaptainId",
+                        column: x => x.CaptainId,
                         principalTable: "captains",
                         principalColumn: "CaptainId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_boats_insurances_InsurancesModelInsuranceId",
-                        column: x => x.InsurancesModelInsuranceId,
+                        name: "FK_boats_insurances_InsuranceId",
+                        column: x => x.InsuranceId,
                         principalTable: "insurances",
                         principalColumn: "InsuranceId",
                         onDelete: ReferentialAction.Restrict);
@@ -280,22 +277,20 @@ namespace Charter.Migrations
                     EmailAddress = table.Column<string>(nullable: true),
                     Telephone = table.Column<string>(nullable: true),
                     AddressId = table.Column<int>(nullable: true),
-                    AddressModelAddressId = table.Column<int>(nullable: true),
-                    CaptainId = table.Column<int>(nullable: true),
-                    CaptainsModelCaptainId = table.Column<int>(nullable: true)
+                    CaptainId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_clients", x => x.ClientId);
                     table.ForeignKey(
-                        name: "FK_clients_address_AddressModelAddressId",
-                        column: x => x.AddressModelAddressId,
+                        name: "FK_clients_address_AddressId",
+                        column: x => x.AddressId,
                         principalTable: "address",
                         principalColumn: "AddressId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_clients_captains_CaptainsModelCaptainId",
-                        column: x => x.CaptainsModelCaptainId,
+                        name: "FK_clients_captains_CaptainId",
+                        column: x => x.CaptainId,
                         principalTable: "captains",
                         principalColumn: "CaptainId",
                         onDelete: ReferentialAction.Restrict);
@@ -304,12 +299,12 @@ namespace Charter.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1fa318fe-2aae-4732-bdbf-d1eb51fe291c", "f3980570-9c77-4c2b-a71b-21178204eb6b", "Admin", "ADMIN" });
+                values: new object[] { "58baf82d-f5a4-44cb-b49e-84952dcb11bf", "698b5094-6781-423f-bba2-845bb6ab06d1", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a0ae6cbd-1254-4511-a3fb-48d546dc344b", "654fc726-f442-43de-a95f-a064007f3440", "Captain", "CAPTAIN" });
+                values: new object[] { "df1140da-b038-43e2-96bc-dde0997c8296", "1b8765d5-ed89-4f79-9cdd-04e8bf68c2d4", "Captain", "CAPTAIN" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -351,19 +346,19 @@ namespace Charter.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_baits_CaptainsModelCaptainId",
+                name: "IX_baits_CaptainId",
                 table: "baits",
-                column: "CaptainsModelCaptainId");
+                column: "CaptainId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_boats_CaptainsModelCaptainId",
+                name: "IX_boats_CaptainId",
                 table: "boats",
-                column: "CaptainsModelCaptainId");
+                column: "CaptainId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_boats_InsurancesModelInsuranceId",
+                name: "IX_boats_InsuranceId",
                 table: "boats",
-                column: "InsurancesModelInsuranceId");
+                column: "InsuranceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_captains_IdentityUserId",
@@ -371,14 +366,14 @@ namespace Charter.Migrations
                 column: "IdentityUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_clients_AddressModelAddressId",
+                name: "IX_clients_AddressId",
                 table: "clients",
-                column: "AddressModelAddressId");
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_clients_CaptainsModelCaptainId",
+                name: "IX_clients_CaptainId",
                 table: "clients",
-                column: "CaptainsModelCaptainId");
+                column: "CaptainId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

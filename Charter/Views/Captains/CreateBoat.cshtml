@@ -1,0 +1,64 @@
+﻿@model Charter.Models.BoatsModel
+
+@{
+    ViewData["Title"] = "CreateBoat";
+}
+
+<h1>CreateBoat</h1>
+
+<h4>BoatsModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBoat">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BoatMake" class="control-label"></label>
+                <input asp-for="BoatMake" class="form-control" />
+                <span asp-validation-for="BoatMake" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Engine" class="control-label"></label>
+                <input asp-for="Engine" class="form-control" />
+                <span asp-validation-for="Engine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineHours" class="control-label"></label>
+                <input asp-for="EngineHours" class="form-control" />
+                <span asp-validation-for="EngineHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsageAmountHours" class="control-label"></label>
+                <input asp-for="UsageAmountHours" class="form-control" />
+                <span asp-validation-for="UsageAmountHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GasCotst" class="control-label"></label>
+                <input asp-for="GasCotst" class="form-control" />
+                <span asp-validation-for="GasCotst" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelCapacity" class="control-label"></label>
+                <input asp-for="FuelCapacity" class="form-control" />
+                <span asp-validation-for="FuelCapacity" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

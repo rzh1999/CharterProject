@@ -42,8 +42,38 @@ namespace Charter.Controllers
                 return RedirectToAction("CreateCaptain");
             }
         }
+        public ActionResult BoatDetails(int id)
+        {
+            var boat = _context.boats.Where(h => h.BoatId == id).SingleOrDefault();
+            return View(boat);
+        }
+        // GET: Captain/Create
+        public ActionResult CreateBoat()
+        {
+            BoatsModel boatsModel = new BoatsModel();
+            return View(boatsModel);
+        }
 
-       
+        // POST: Captain/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateBoat(BoatsModel boatsModel)
+        {
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var captId = _context.captains.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                boatsModel.CaptainId = captId.CaptainId;
+                _context.boats.Add(boatsModel);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: Captain/Create
         public ActionResult CreateCaptain()
@@ -114,7 +144,48 @@ namespace Charter.Controllers
             // return View(captainsModel);
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> EditBoat(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var boat = await _context.boats.FindAsync(id);
+            if (boat == null)
+            {
+                return NotFound();
+            }
+
+            return View(boat);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditBoat(int id, BoatsModel boatsModel)
+        {
+            if (id != boatsModel.BoatId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(boatsModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                }
+                return RedirectToAction("Index");
+            }
+
+            // return View(captainsModel);
+            return RedirectToAction("Index");
+        }
         // GET: Captain/Delete/5
         public ActionResult DeleteCaptain(int id)
         {
@@ -131,6 +202,30 @@ namespace Charter.Controllers
             {
                 var captainToDelete = _context.captains.Find(id);
                 _context.captains.Remove(captainToDelete);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult DeleteBoat(int id)
+        {
+            var boatToDelete = _context.boats.Where(s => s.BoatId == id).FirstOrDefault();
+            return View(boatToDelete);
+        }
+
+        // POST: Captain/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBoat(int id, BoatsModel boatsModel)
+        {
+            try
+            {
+                var boatToDelete = _context.boats.Find(id);
+                _context.boats.Remove(boatToDelete);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));

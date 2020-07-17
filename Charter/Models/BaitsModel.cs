@@ -21,7 +21,7 @@ namespace Charter.Models
         [Display(Name = "Death Count ")]
         public int DeathCount { get; set; }
 
-        [ForeignKey("CaptainId")]
+        [ForeignKey("CaptainsModel")]
         public int? CaptainId { get; set; }
         public CaptainsModel CaptainsModel { get; set; }
 
