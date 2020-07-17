@@ -127,7 +127,31 @@ namespace Charter.Controllers
                 return View();
             }
         }
+        public ActionResult CreateInsurance()
+        {
+            InsurancesModel insurancesModel = new InsurancesModel();
+            return View(insurancesModel);
+        }
 
+        // POST: Captain/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateInsurance(InsurancesModel insurancesModel)
+        {
+            try
+            {
+               
+                _context.insurances.Add(insurancesModel);
+                _context.SaveChanges();
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         public async Task<IActionResult> EditCaptain(int? id)
         {
             if (id == null)
