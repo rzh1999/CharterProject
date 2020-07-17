@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Charter.ActionFilters;
+using Charter.Hubs;
 
 namespace Charter
 {
@@ -46,6 +47,7 @@ namespace Charter
             });
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +78,7 @@ namespace Charter
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }
