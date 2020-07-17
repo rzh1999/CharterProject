@@ -74,6 +74,32 @@ namespace Charter.Controllers
                 return View();
             }
         }
+        public ActionResult CreateBait()
+        {
+            BaitsModel baitsModel = new BaitsModel();
+            return View(baitsModel);
+        }
+
+        // POST: Captain/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateBait(BaitsModel baitsModel)
+        {
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var captId = _context.captains.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                baitsModel.CaptainId = captId.CaptainId;
+                _context.baits.Add(baitsModel);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: Captain/Create
         public ActionResult CreateCaptain()
@@ -132,6 +158,48 @@ namespace Charter.Controllers
                 try
                 {
                     _context.Update(captainsModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                }
+                return RedirectToAction("Index");
+            }
+
+            // return View(captainsModel);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> EditBait(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.baits.FindAsync(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditBait(int id, BaitsModel baitsModel)
+        {
+            if (id != baitsModel.CaptainId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(baitsModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
