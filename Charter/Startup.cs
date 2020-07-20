@@ -16,6 +16,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Charter.ActionFilters;
 using Charter.Hubs;
+using Stripe;
+using System.Configuration;
 
 namespace Charter
 {
@@ -31,6 +33,7 @@ namespace Charter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -48,11 +51,14 @@ namespace Charter
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -80,6 +86,7 @@ namespace Charter
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ChatHub>("/chathub");
             });
+            
         }
     }
 }

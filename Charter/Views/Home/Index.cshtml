@@ -1,8 +1,40 @@
-﻿@{
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<Charter.StripeSettings> Stripe
+@{
     ViewData["Title"] = "Home Page";
 }
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <form asp-action="ChargeHalfDay" asp-controller="Home" method="Post">
+            <article>
+                <label>Half Day Trip Amount: $450.00</label>
+            </article>
+            <script src="//checkout.stripe.com/v2/checkout.js"
+                    class="stripe-button"
+                    data-key="@Stripe.Value.PublishableKey"
+                    data-locale="auto"
+                    data-description="Sample Charge"
+                    data-amount="45000">
+
+            </script>
+
+        </form>
+        <form asp-action="ChargeFullDay" asp-controller="Home" method="Post">
+            <article>
+                <label>Full Day Trip Amount: $675.00</label>
+            </article>
+            <script src="//checkout.stripe.com/v2/checkout.js"
+                    class="stripe-button"
+                    data-key="@Stripe.Value.PublishableKey"
+                    data-locale="auto"
+                    data-description="Sample Charge"
+                    data-amount="67500">
+
+            </script>
+
+        </form>
+    </div>

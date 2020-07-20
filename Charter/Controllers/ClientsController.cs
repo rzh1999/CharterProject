@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PayPal.Api;
+
 
 namespace Charter.Controllers
 {
@@ -144,5 +146,8 @@ namespace Charter.Controllers
                 return View();
             }
         }
+
+        
+
     }
 }
