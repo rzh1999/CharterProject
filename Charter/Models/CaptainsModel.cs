@@ -40,6 +40,9 @@ namespace Charter.Models
         [Display(Name = "Longitude ")]
         public double Longitude { get; set; }
 
+        [Display(Name = "Tide Station Id")]
+        public int TideStationId { get; set; }
+
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }

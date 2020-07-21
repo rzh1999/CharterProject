@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Charter.Data;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using PayPal.Api;
 
 namespace Charter.Controllers
 {
@@ -260,11 +263,26 @@ namespace Charter.Controllers
             {
                 return NotFound();
             }
-
+            
+            
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var engineHours = _context.boats.AsNoTracking().Where(b => b.BoatId == id).FirstOrDefault();
+                    if (boatsModel.EngineHours != engineHours.EngineHours)
+                    {
+                        boatsModel.EngineHours += engineHours.EngineHours;
+                    }
+                    if (boatsModel.UsageAmountHours != engineHours.UsageAmountHours)
+                    {
+                        boatsModel.UsageAmountHours += engineHours.UsageAmountHours;
+                    }
+                    if (boatsModel.GasCotst != engineHours.GasCotst)
+                    {
+                        boatsModel.GasCotst += engineHours.GasCotst;
+                    }
+                    
                     _context.Update(boatsModel);
                     await _context.SaveChangesAsync();
                 }
@@ -326,6 +344,46 @@ namespace Charter.Controllers
             {
                 return View();
             }
+        }
+        public async Task<ActionResult> GetTide(int? id, CaptainsModel captainsModel)
+        {
+            var captain = _context.captains.Where(c => c.CaptainId == id).FirstOrDefault();
+            HttpClient httpClient = new HttpClient();
+            var url =
+                string.Format(
+                    "https://tidesandcurrents.noaa.gov/api/datagetter?date=today&station={0}&product=predictions&datum=msl&units=english&time_zone=gmt&application=web_services&format=json&interval=hilo",captain.TideStationId);
+
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                JObject parsedJson = JObject.Parse(jsonResponse);
+                var predictions = parsedJson["predictions"];
+
+                TidePredictionViewModel tidePredictionViewModel = new TidePredictionViewModel();
+                tidePredictionViewModel.Time = new List<String>();
+                tidePredictionViewModel.Height = new List<String>();
+                tidePredictionViewModel.Tide = new List<String>();
+
+
+                for (int i = 0; i < 4; i++)
+                {
+                    var vdata = predictions[i]["t"].ToString();
+                    var height = predictions[i]["v"].ToString();
+                    var tide = predictions[i]["type"].ToString();
+
+                    tidePredictionViewModel.Time.Add(vdata);
+                    tidePredictionViewModel.Height.Add(height);
+                    tidePredictionViewModel.Tide.Add(tide);
+                }
+                return View(tidePredictionViewModel);
+            }
+            else
+            {
+                return View();
+            }
+
+                
         }
     }
 }

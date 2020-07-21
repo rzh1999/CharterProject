@@ -146,6 +146,9 @@ namespace Charter.Migrations
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TideStationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -258,22 +261,22 @@ namespace Charter.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "86600202-bffd-4de0-a104-721694e1a2c0",
-                            ConcurrencyStamp = "40cd2925-e743-4ab9-ba6c-c1b9c1923864",
+                            Id = "f2966fd1-9792-42c7-8613-73ecb266f2fe",
+                            ConcurrencyStamp = "26a692b7-0f84-45db-978d-5e152362f7bd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "78e4a234-becc-437e-ab40-1dd240c25ad4",
-                            ConcurrencyStamp = "8c4455cc-a4ab-4695-a3a8-d69625b5293a",
+                            Id = "5ed66883-9fd2-4ce1-859f-f291741645da",
+                            ConcurrencyStamp = "91cb1e2a-a6c7-46a3-be1b-609ca0e923df",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         },
                         new
                         {
-                            Id = "d0037468-0440-4b3c-b7c7-0e53131effa9",
-                            ConcurrencyStamp = "c6d53d59-b774-4fbf-857f-363de6eb096d",
+                            Id = "1cf8348f-b4b2-401e-894b-08938643e29d",
+                            ConcurrencyStamp = "fc6e7c95-8b79-41b0-b793-894c1ef2f89d",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
