@@ -358,7 +358,7 @@ namespace Charter.Controllers
             {
                 string jsonResponse = await response.Content.ReadAsStringAsync();
                 JObject parsedJson = JObject.Parse(jsonResponse);
-                var predictions = parsedJson["predictions"];
+                var predictions = parsedJson["predictions"].ToArray();
 
                 TidePredictionViewModel tidePredictionViewModel = new TidePredictionViewModel();
                 tidePredictionViewModel.Time = new List<String>();
@@ -366,7 +366,7 @@ namespace Charter.Controllers
                 tidePredictionViewModel.Tide = new List<String>();
 
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var vdata = predictions[i]["t"].ToString();
                     var height = predictions[i]["v"].ToString();
