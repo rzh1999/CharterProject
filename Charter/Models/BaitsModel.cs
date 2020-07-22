@@ -15,11 +15,20 @@ namespace Charter.Models
         [Display(Name = "Bait Type ")]
         public string BaitType { get; set; }
 
-        [Display(Name = "Cost ")]
+        [Display(Name = "Bait Cost ")]
         public double BaitCost { get; set; }
+
+        [Display(Name = "Bait Price ")]
+        public double BaitPrice { get; set; }
+
+        [Display(Name = "Price Per Dz. ")]
+        public double PricePerDozen { get; set; }
 
         [Display(Name = "Death Count ")]
         public int DeathCount { get; set; }
+
+        [Display(Name = "Amount In Thousands")]
+        public int Amount { get; set; }
 
         [ForeignKey("CaptainsModel")]
         public int? CaptainId { get; set; }

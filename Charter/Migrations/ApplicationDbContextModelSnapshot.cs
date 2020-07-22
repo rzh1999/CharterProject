@@ -50,7 +50,13 @@ namespace Charter.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<double>("BaitCost")
+                        .HasColumnType("float");
+
+                    b.Property<double>("BaitPrice")
                         .HasColumnType("float");
 
                     b.Property<string>("BaitType")
@@ -61,6 +67,9 @@ namespace Charter.Migrations
 
                     b.Property<int>("DeathCount")
                         .HasColumnType("int");
+
+                    b.Property<double>("PricePerDozen")
+                        .HasColumnType("float");
 
                     b.HasKey("BaitId");
 
@@ -261,22 +270,22 @@ namespace Charter.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f2966fd1-9792-42c7-8613-73ecb266f2fe",
-                            ConcurrencyStamp = "26a692b7-0f84-45db-978d-5e152362f7bd",
+                            Id = "7c6ec6f5-1c6f-4548-9316-861ffab892f2",
+                            ConcurrencyStamp = "5d29bb59-7c10-4c1c-8d54-a35872819cbc",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "5ed66883-9fd2-4ce1-859f-f291741645da",
-                            ConcurrencyStamp = "91cb1e2a-a6c7-46a3-be1b-609ca0e923df",
+                            Id = "4f81bc61-e859-427a-951f-3e3e835583fa",
+                            ConcurrencyStamp = "77d51b4e-2f6c-4d0f-875c-de9c68d28e73",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         },
                         new
                         {
-                            Id = "1cf8348f-b4b2-401e-894b-08938643e29d",
-                            ConcurrencyStamp = "fc6e7c95-8b79-41b0-b793-894c1ef2f89d",
+                            Id = "e23254b3-e12c-4509-bbc1-03d94f26f617",
+                            ConcurrencyStamp = "46000682-a36e-43ae-90da-86fb585327bf",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });

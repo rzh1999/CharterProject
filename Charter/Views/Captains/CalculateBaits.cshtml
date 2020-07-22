@@ -1,0 +1,40 @@
+﻿@model Charter.Models.BaitsModel
+
+@{
+    ViewData["Title"] = "CalculateBaits";
+}
+
+<h1>CalculateBaits</h1>
+
+<h4>BaitsModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CalculateBaits">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BaitId" />
+            <input type="hidden" asp-for="BaitType" />
+            <input type="hidden" asp-for="BaitCost" />
+            <input type="hidden" asp-for="BaitPrice" />
+            <input type="hidden" asp-for="PricePerDozen" />
+            <input type="hidden" asp-for="DeathCount" />
+            <input type="hidden" asp-for="Amount" />
+            <input type="hidden" asp-for="CaptainId" />
+            
+            
+           
+           <h4> To Get Your Bait Analysis Click Submit Button.</h4>
+            
+            
+    
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

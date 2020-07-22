@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
+//using AspNetCore;
 using Charter.Data;
 using Charter.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -426,5 +427,37 @@ namespace Charter.Controllers
 
 
         }
+
+        public ActionResult CalculateBaits(int id, CaptainsModel captainsModel)
+        {
+            var baitToCalculate = _context.baits.Where(c => c.CaptainId == id).FirstOrDefault();
+            return View(baitToCalculate);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CalculateBaits(int id, BaitsModel baitsModel)
+        {
+            try
+            {
+                //calculate bait price per 
+                var bait = _context.baits.AsNoTracking().Where(b => b.CaptainId == id).FirstOrDefault();
+                baitsModel.BaitCost = bait.BaitPrice / bait.Amount;
+                baitsModel.PricePerDozen = 12 * baitsModel.BaitCost ;
+                _context.Update(baitsModel);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(CostDetails));
+                
+            }
+            catch
+            {
+              return View();
+            }
+        }
+        public ActionResult CostDetails(int id, CaptainsModel captainsModel)
+        {
+            var baits = _context.baits.Where(b => id == captainsModel.CaptainId).FirstOrDefault();
+            return View(baits);
+        }
+
     }
 }
