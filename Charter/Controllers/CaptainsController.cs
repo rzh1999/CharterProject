@@ -385,5 +385,46 @@ namespace Charter.Controllers
 
                 
         }
+
+        public async Task<ActionResult> GetWeather(int? id, CaptainsModel captainsModel)
+        {
+            var captain = _context.captains.Where(c => c.CaptainId == id).FirstOrDefault();
+            HttpClient httpClient = new HttpClient();
+            var url =
+                string.Format(
+                    "https://api.openweathermap.org/data/2.5/forecast?zip={0},us&units=imperial&APPID=7d525b2a241057a21adda993b263df5f", captain.ZipCode);
+
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                JObject parsedJson = JObject.Parse(jsonResponse);
+                var weather = parsedJson["list"].ToArray();
+
+                var mainTemp = weather[0]["main"]["temp"].ToString();
+                var feelsLike = weather[0]["main"]["feels_like"].ToString();
+                var maxTemp = weather[0]["main"]["temp_max"].ToString();
+                var pressure = weather[0]["main"]["pressure"].ToString();
+                var seaLevel = weather[0]["main"]["sea_level"].ToString();
+                var windSpeed = weather[0]["wind"]["speed"].ToString();
+                //var description = weather[0]["weather"]["description"].ToString();
+
+                WeatherViewModel weatherViewModel = new WeatherViewModel();
+                weatherViewModel.mainTemp = mainTemp;
+                weatherViewModel.feelsLike = feelsLike;
+                weatherViewModel.maxTemp = maxTemp;
+                weatherViewModel.pressure = pressure;
+                weatherViewModel.seaLevel = seaLevel;
+                weatherViewModel.windSpeed = windSpeed;
+
+                return View(weatherViewModel);
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
     }
 }

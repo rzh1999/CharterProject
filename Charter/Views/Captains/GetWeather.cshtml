@@ -1,0 +1,59 @@
+﻿@model WeatherViewModel
+@{
+    ViewData["Title"] = "GetWeather";
+}
+
+<h1>GetWeather</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h4>Temp</h4>
+            </th>
+            <th>
+                <h4>Max Temp</h4>
+            </th>
+            <th>
+                <h4>Feels Like</h4>
+            </th>
+            <th>
+                <h4>Pressure</h4>
+            </th>
+            <th>
+                <h4>Sea Level</h4>
+            </th>
+            <th>
+                <h4>Wind Speed</h4>
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+       
+            <tr>
+                <td>
+                   @Model.mainTemp
+                </td>
+                <td>
+                   @Model.maxTemp 
+                </td>
+                <td>
+                   @Model.feelsLike
+
+                </td>
+                <td>
+                    @Model.pressure
+                </td>
+                <td>
+                    @Model.seaLevel
+                </td>
+                <td>
+                    @Model.windSpeed
+                </td>
+
+            </tr>
+       
+    </tbody>
+</table>
