@@ -26,18 +26,16 @@ a {
   
 }
 
-.menu-text{
-    font-size:2rem;
-}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 62.5%;
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
-    font-size: 62.5%;
+    font-size: 16px;
   }
 }
 
@@ -84,5 +82,5 @@ body {
 }
 
 .pText{
-font-size:2rem;
+font-size:1.5rem;
 }
