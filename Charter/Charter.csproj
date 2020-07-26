@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="images\" />
+    <Folder Include="wwwroot\css\images\" />
   </ItemGroup>
 
 </Project>

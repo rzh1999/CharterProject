@@ -1,17 +1,21 @@
 ﻿@using Microsoft.Extensions.Options
 @inject IOptions<Charter.StripeSettings> Stripe
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Charter Management";
 }
     <script src="https://js.stripe.com/v3/"></script>
     
     <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <h1 class="display-4">Welcome To The Charter Management System</h1>
 
+        <img src="~/css/images/snook2.jpg" alt="snook" />
         <form asp-action="ChargeHalfDay" asp-controller="Home" method="Post">
             <article>
-                <label>Half Day Trip Amount: $450.00</label>
+                <h4 class="tripTitle">4-Hour Inshore Trip</h4>
+                <p class="pText">Experience our 4-hour inshore fishing trip where our Captain takes you beyond fishing and opens a whole new aquatic and aviary world to you. Your captain will not only guide you to catch a variety inshore species like snook, trout, redfish and sharks, but will point out historical landmarks, explain the habits of manatees, turtles and other aquatic animals, up close views of birds of all different species as well. Your trip includes your liscences, food, drink and all the sunscreen you can use, youll need it.</p>
+            </article>
+            <article>
+                <label class="tripTitle">Half Day Trip Amount: $450.00</label>
             </article>
             <script src="//checkout.stripe.com/v2/checkout.js"
                     class="stripe-button"
@@ -21,11 +25,14 @@
                     data-amount="45000">
 
             </script>
-
+            <img src="~/css/images/divider.png" alt="divider" />
         </form>
+        <img src="~/css/images/boat.jpg" alt="boat" />
+        <h4 class="tripTitle">6-Hour OffShore Trip</h4>
+        <p class="pText">This is our 6-hour offshore trip. The first thing that sets apart from many is you will be 10 miles into the gulf within 20 minutes of your trip, so no time wasting driving out to your first spot like many others. Once out into the gulf you will be able to fish for such species as grouper, snapper, kingfish, shark, and sometimes tuna. You will also be able to snorkel some of our reefs and wrecks if you so desire. Your trip charge includes liscences, food, drink and sunscreen. Get plenty of rest before this trip and hydrate we catch fish 40lbs + here its a battle!!</p>
         <form asp-action="ChargeFullDay" asp-controller="Home" method="Post">
             <article>
-                <label>Full Day Trip Amount: $675.00</label>
+                <label class="tripTitle">Full Day Trip Amount: $675.00</label>
             </article>
             <script src="//checkout.stripe.com/v2/checkout.js"
                     class="stripe-button"
