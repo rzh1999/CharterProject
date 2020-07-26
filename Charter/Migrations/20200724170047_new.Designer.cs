@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Charter.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200722170359_new")]
+    [Migration("20200724170047_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -272,22 +272,22 @@ namespace Charter.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c6ec6f5-1c6f-4548-9316-861ffab892f2",
-                            ConcurrencyStamp = "5d29bb59-7c10-4c1c-8d54-a35872819cbc",
+                            Id = "daa83643-fa19-46e7-ae3b-196f5240829c",
+                            ConcurrencyStamp = "0b542891-56f4-49fa-a92b-53dab9a62249",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4f81bc61-e859-427a-951f-3e3e835583fa",
-                            ConcurrencyStamp = "77d51b4e-2f6c-4d0f-875c-de9c68d28e73",
+                            Id = "507b7ef8-96e7-4149-8c02-223e1553f278",
+                            ConcurrencyStamp = "d0a8607a-135f-4fbb-8c0f-803d2512937c",
                             Name = "Captain",
                             NormalizedName = "CAPTAIN"
                         },
                         new
                         {
-                            Id = "e23254b3-e12c-4509-bbc1-03d94f26f617",
-                            ConcurrencyStamp = "46000682-a36e-43ae-90da-86fb585327bf",
+                            Id = "71eba0b3-7371-4f81-9d21-083de67e6b71",
+                            ConcurrencyStamp = "a2533e58-005d-48b5-b101-f3205c39a342",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });

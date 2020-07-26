@@ -46,6 +46,7 @@ namespace Charter.Data
         public DbSet<ClientsModel> clients { get; set; }
         public DbSet<InsurancesModel> insurances { get; set; }
         public DbSet<MessagesModel> messages { get; set; }
+        
 
     }
 }

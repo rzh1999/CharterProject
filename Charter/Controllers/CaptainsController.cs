@@ -459,5 +459,11 @@ namespace Charter.Controllers
             return View(baits);
         }
 
+        public ActionResult ChartBoats(int id)
+        {
+            var boatlist = _context.boats.Where(b => b.CaptainId == id).ToList();
+            return View(boatlist);
+        }
+
     }
 }

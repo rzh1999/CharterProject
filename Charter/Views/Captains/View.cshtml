@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Charter.Models.BoatsModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BoatMake)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Engine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsageAmountHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GasCotst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuelCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaptainsModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsurancesModel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoatMake)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsageAmountHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GasCotst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaptainsModel.CaptainId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsurancesModel.InsuranceId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BoatId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BoatId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BoatId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
