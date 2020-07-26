@@ -6,56 +6,64 @@
 
     <h1>Boat Details For @Html.DisplayFor(model => model.BoatMake) @Html.DisplayFor(model => model.Model) </h1>
 
-<div>
-    <h4>BoatsModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BoatMake)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BoatMake)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Engine)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Engine)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EngineHours)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EngineHours)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UsageAmountHours)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UsageAmountHours)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GasCotst)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GasCotst)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuelCapacity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuelCapacity)
-        </dd>
-       
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.BoatId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        
+        <hr />
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Boat Details
+        </a>
+
+        <div class="collapse show" id="collapseExample">
+            <div class="card card-body">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.BoatMake)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.BoatMake)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Model)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Model)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Engine)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Engine)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.EngineHours)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.EngineHours)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UsageAmountHours)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UsageAmountHours)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.GasCotst)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.GasCotst)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FuelCapacity)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FuelCapacity)
+                    </dd>
+
+                </dl>
+            </div>
+            </div>
+        </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.BoatId">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
