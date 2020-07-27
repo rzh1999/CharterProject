@@ -1,18 +1,16 @@
 ﻿@model WeatherViewModel
 @{
-    ViewData["Title"] = "GetWeather";
+    ViewData["Title"] = "Get Weather";
 }
 
-<h1>GetWeather</h1>
+    <h4>Your Local Weater Prediction For @DateTime.Now.ToShortDateString()</h4>
 <table class="table">
     <thead>
         <tr>
             <th>
                 <h4>Temp</h4>
             </th>
-            <th>
-                <h4>Max Temp</h4>
-            </th>
+            
             <th>
                 <h4>Feels Like</h4>
             </th>
@@ -36,9 +34,7 @@
                 <td>
                    @Model.mainTemp
                 </td>
-                <td>
-                   @Model.maxTemp 
-                </td>
+               
                 <td>
                    @Model.feelsLike
 
