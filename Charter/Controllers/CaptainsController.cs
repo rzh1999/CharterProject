@@ -198,20 +198,21 @@ namespace Charter.Controllers
             // return View(captainsModel);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> EditBait(int? id)
+        public IActionResult EditBait(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var client = await _context.baits.FindAsync(id);
-            if (client == null)
+            //var bait =  _context.baits.Where(b => b.CaptainId == id).FirstOrDefault();
+            var bait = _context.baits.Find(id);
+            if (bait == null)
             {
                 return NotFound();
             }
 
-            return View(client);
+            return View(bait);
         }
 
         [HttpPost]
@@ -465,6 +466,12 @@ namespace Charter.Controllers
             ViewData["Labels"] = _context.boats.Select(b => b.BoatMake).ToArray();
             ViewData["GasCosts"] = _context.boats.Select(b => b.GasCotst).ToArray();
             return View(boatlist);
+        }
+
+        public ActionResult GetBaits(int id)
+        {
+            var baits = _context.baits.Where(b => b.CaptainId == id).ToList();
+            return View(baits);
         }
 
     }

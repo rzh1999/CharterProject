@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Charter.Models.BaitsModel>
+
+@{
+    ViewData["Title"] = "GetBaits";
+}
+
+<h1>GetBaits</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BaitType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaitCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerDozen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeathCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaptainsModel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaitType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaitCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerDozen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeathCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaptainsModel.CaptainId)
+            </td>
+            <td>
+                <a asp-action="EditBait" asp-route-id="@item.BaitId">Edit</a> |
+                
+                <a asp-action="Delete" asp-route-id="@item.BaitId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

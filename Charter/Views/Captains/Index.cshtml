@@ -64,8 +64,13 @@
         </div>
         </div>
     </div>
-        <div>
-            <a asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit</a> |
-            <a asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete</a> |
-            <a asp-action="GetTide" asp-route-id="@Model.CaptainId">Get Tide</a>
-        </div>
+<div>
+    <a asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit</a> |
+    <a asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete</a> |
+    <a asp-action="GetTide" asp-route-id="@Model.CaptainId">Get Tide</a>
+    <a asp-action="BoatDetails" asp-route-id="@Model.CaptainId">Boat Details</a>
+    <a asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
+    <a asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
+    <a asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
+    <a asp-action="GetBaits" asp-route-id="@Model.CaptainId">Baits</a>
+</div>
