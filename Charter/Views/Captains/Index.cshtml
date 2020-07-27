@@ -4,76 +4,124 @@
     ViewData["Title"] = "Captain Home";
 }
 
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"> <img src="~/css/images/snookjump.jpg" width="30" height="30"></a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit Captain</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete Captain</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetTide" asp-route-id="@Model.CaptainId">Tides</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetBoats" asp-route-id="@Model.CaptainId">Boats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetBaits" asp-route-id="@Model.CaptainId">Baits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetWeather" asp-route-id="@Model.CaptainId">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="ChartBoats" asp-route-id="@Model.CaptainId">Gas Chart</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Create
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"  asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
+
+                        <a class="dropdown-item"  asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
+
+                        <a class="dropdown-item"  asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
+
+                    </div>
+                </li>
+</div>
+
+    </nav>
+
+    <div>
+       
+           
+        <h4>Welcome Back @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h4>
+        <hr />
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Your Profile
+        </a>
+        <div class="collapse show" id="collapseExample">
+            <div class="card card-body">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.BusinessName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.BusinessName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.City)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.City)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.State)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.State)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ZipCode)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ZipCode)
+                    </dd>
 
 
-<div>
-    <h4>Welcome Back @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h4>
-    <hr />
-
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Your Profile
-    </a>
-    <div class="collapse show" id="collapseExample">
-        <div class="card card-body">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.FirstName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.LastName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.LastName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.BusinessName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.BusinessName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Address)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.City)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.City)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.State)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.State)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.ZipCode)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.ZipCode)
-                </dd>
-
-
-            </dl>
-        </div>
+                </dl>
+            </div>
         </div>
     </div>
-<div>
-    <a asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit</a> |
-    <a asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete</a> |
-    <a asp-action="GetTide" asp-route-id="@Model.CaptainId">Get Tide</a>
-    <a asp-action="BoatDetails" asp-route-id="@Model.CaptainId">Boat Details</a>
-    <a asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
-    <a asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
-    <a asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
-    <a asp-action="GetBaits" asp-route-id="@Model.CaptainId">Baits</a>
-    <a asp-action="GetBoats" asp-route-id="@Model.CaptainId">Boats</a>
-    <a asp-action="GetWeather" asp-route-id="@Model.CaptainId">Get Weather</a>
-    
-</div>
+
