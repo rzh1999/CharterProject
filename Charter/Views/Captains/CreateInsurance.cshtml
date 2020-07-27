@@ -1,12 +1,12 @@
 ﻿@model Charter.Models.InsurancesModel
 
 @{
-    ViewData["Title"] = "CreateInsurance";
+    ViewData["Title"] = "Create Insurance";
 }
 
-<h1>CreateInsurance</h1>
 
-<h4>InsurancesModel</h4>
+
+<h4>Enter your Insurance Information</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,9 +34,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

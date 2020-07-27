@@ -1,10 +1,9 @@
 ﻿@model Charter.Models.CaptainsModel
 
 @{
-    ViewData["Title"] = "CreateCaptain";
+    ViewData["Title"] = "Create Captain";
 }
 
-<h1>Captain Information</h1>
 
 <h4>Please enter info to create a new captain</h4>
 <hr />
@@ -60,9 +59,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
