@@ -17,19 +17,14 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit Captain</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete Captain</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" asp-action="GetTide" asp-route-id="@Model.CaptainId">Tides</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-action="GetBoats" asp-route-id="@Model.CaptainId">Boats</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" asp-action="GetBaits" asp-route-id="@Model.CaptainId">Baits</a>
                 </li>
@@ -44,11 +39,23 @@
                         Create
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item"  asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
+                        <a class="dropdown-item" asp-action="CreateBoat" asp-route-id="@Model.CaptainId">Create Boat</a>
 
-                        <a class="dropdown-item"  asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
+                        <a class="dropdown-item" asp-action="CreateInsurance" asp-route-id="@Model.CaptainId">Create Insurance</a>
 
-                        <a class="dropdown-item"  asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
+                        <a class="dropdown-item" asp-action="CreateBait" asp-route-id="@Model.CaptainId">Create Bait</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Captain
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-action="EditCaptain" asp-route-id="@Model.CaptainId">Edit Captain</a>
+
+                        <a class="dropdown-item" asp-action="DeleteCaptain" asp-route-id="@Model.CaptainId">Delete Captain</a>
+
 
                     </div>
                 </li>
