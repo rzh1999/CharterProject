@@ -1,12 +1,12 @@
 ﻿@model Charter.Models.BoatsModel
 
 @{
-    ViewData["Title"] = "EditBoat";
+    ViewData["Title"] = "Edit Boat";
 }
 
-<h1>EditBoat</h1>
 
-<h4>BoatsModel</h4>
+
+<h4>Enter information you want changed</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -58,9 +58,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
