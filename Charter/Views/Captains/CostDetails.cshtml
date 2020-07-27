@@ -4,54 +4,61 @@
     ViewData["Title"] = "CostDetails";
 }
 
-<h1>CostDetails</h1>
+<h1>Cost Details of Your Bait</h1>
 
 <div>
-    <h4>BaitsModel</h4>
+
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaitType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaitType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaitCost)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaitCost)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaitPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaitPrice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PricePerDozen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PricePerDozen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DeathCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DeathCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CaptainsModel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CaptainsModel.CaptainId)
-        </dd>
-    </dl>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Bait Costs
+    </a>
+    <div class="collapse show" id="collapseExample">
+        <div class="card card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.BaitType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.BaitType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.BaitCost)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.BaitCost)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.BaitPrice)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.BaitPrice)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PricePerDozen)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PricePerDozen)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DeathCount)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DeathCount)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Amount)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CaptainsModel)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CaptainsModel.CaptainId)
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 

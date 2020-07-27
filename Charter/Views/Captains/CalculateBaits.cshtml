@@ -4,9 +4,9 @@
     ViewData["Title"] = "CalculateBaits";
 }
 
-<h1>CalculateBaits</h1>
 
-<h4>BaitsModel</h4>
+
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,18 +23,20 @@
             
             
            
-           <h4> To Get Your Bait Analysis Click Submit Button.</h4>
+           <h4> To Calculate Your Bait Analysis Click Submit Button.</h4>
             
             
     
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+   
+    <a asp-action="CostDetails" asp-route-id="@Model.CaptainId">Cost Details</a>
+
 </div>
 
