@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ScreenName)
@@ -30,15 +30,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-
+           
         </tr>
 }
     </tbody>
 </table>
-<div class="media border p-3">
-    <img src="~/css/images/snookjump.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-    <div class="media-body">
-        <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-        <p>Lorem ipsum...</p>
-    </div>
-</div>

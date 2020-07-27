@@ -20,15 +20,18 @@
 <html>
 <body>
     <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
+    
+</body>
+<script>
+    
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Mako'],
+                labels: @Html.Raw(Json.Serialize(Model.Select(b => b.BoatMake).ToArray())),
                 datasets: [{
                     label: 'Gas Costs',
-                    data: [@fuel],
+                    data: @Html.Raw(Json.Serialize(Model.Select(b => b.GasCotst).ToArray())),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -58,6 +61,5 @@
                 }
             }
         });
-    </script>
-</body>
+</script>
 </html>

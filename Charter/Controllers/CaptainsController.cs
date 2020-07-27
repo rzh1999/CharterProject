@@ -462,6 +462,8 @@ namespace Charter.Controllers
         public ActionResult ChartBoats(int id)
         {
             var boatlist = _context.boats.Where(b => b.CaptainId == id).ToList();
+            ViewData["Labels"] = _context.boats.Select(b => b.BoatMake).ToArray();
+            ViewData["GasCosts"] = _context.boats.Select(b => b.GasCotst).ToArray();
             return View(boatlist);
         }
 
