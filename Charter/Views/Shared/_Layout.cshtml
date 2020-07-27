@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,6 +32,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark menu-text" asp-area="" asp-controller="Messages" asp-action="Index">View Messages</a>
                         </li>
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Captain"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark menu-text" asp-area="" asp-controller="Clients" asp-action="CreateClient">Create Client</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark menu-text" asp-area="" asp-controller="Clients" asp-action="Index">Get Clients</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark menu-text" asp-area="" asp-controller="Home" asp-action="Privacy">Chat</a>
                         </li>
