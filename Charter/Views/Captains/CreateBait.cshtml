@@ -1,32 +1,24 @@
 ﻿@model Charter.Models.BaitsModel
 
 @{
-    ViewData["Title"] = "CreateBait";
+    ViewData["Title"] = "Create Bait";
 }
 
-<h1>CreateBait</h1>
+<h4>Enter in your bait information</h4>
 
-<h4>BaitsModel</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateBait">
+        <form  asp-action="CreateBait" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BaitType" class="control-label"></label>
                 <input asp-for="BaitType" class="form-control" />
                 <span asp-validation-for="BaitType" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BaitCost" class="control-label"></label>
-                <input asp-for="BaitCost" class="form-control" />
-                <span asp-validation-for="BaitCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeathCount" class="control-label"></label>
-                <input asp-for="DeathCount" class="form-control" />
-                <span asp-validation-for="DeathCount" class="text-danger"></span>
-            </div>
+           
+           
             <div class="form-group">
                 <label asp-for="Amount" class="control-label"></label>
                 <input asp-for="Amount" class="form-control" />
@@ -37,13 +29,9 @@
                 <input asp-for="BaitPrice" class="form-control" />
                 <span asp-validation-for="BaitPrice" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
-                <label asp-for="PricePerDozen" class="control-label"></label>
-                <input asp-for="PricePerDozen" class="form-control" />
-                <span asp-validation-for="PricePerDozen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
     </div>
