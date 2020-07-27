@@ -1,12 +1,12 @@
 ﻿@model Charter.Models.CaptainsModel
 
 @{
-    ViewData["Title"] = "DeleteCaptain";
+    ViewData["Title"] = "Delete Captain";
 }
 
 <h1>DeleteCaptain</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete captain: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3>
 <div>
     <h4>CaptainsModel</h4>
     <hr />
@@ -76,6 +76,6 @@
     <form asp-action="DeleteCaptain">
         <input type="hidden" asp-for="CaptainId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+       
     </form>
 </div>
