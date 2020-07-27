@@ -474,5 +474,30 @@ namespace Charter.Controllers
             return View(baits);
         }
 
+        public ActionResult DeleteBait(int id)
+        {
+            var baitToDelete = _context.baits.Where(s => s.BaitId == id).FirstOrDefault();
+            return View(baitToDelete);
+        }
+
+        // POST: Captain/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBait(int id, BaitsModel baitsModel)
+        {
+            try
+            {
+                var baitToDelete = _context.baits.Find(id);
+                _context.baits.Remove(baitToDelete);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
