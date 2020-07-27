@@ -4,41 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h4>Messages From Clients</h4>
 
 <p>
-    <a asp-action="CreateMessage">Create New</a>
+    <a asp-action="CreateMessage">Create New Message</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Message)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScreenName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
 
-        </tr>
-}
-    </tbody>
-</table>
-<div class="media border p-3">
-    <img src="~/css/images/snookjump.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-    <div class="media-body">
-        <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-        <p>Lorem ipsum...</p>
+@foreach (var item in Model)
+{
+    <div class="media border p-3">
+        <img src="~/css/images/snookjump.jpg" alt="Snook Jump" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4>@Html.DisplayFor(modelItem => item.ScreenName) <small><i>Posted on @DateTime.Now.ToShortDateString()</i></small></h4>
+            <p> @Html.DisplayFor(modelItem => item.Message)</p>
+        </div>
     </div>
-</div>
+}
