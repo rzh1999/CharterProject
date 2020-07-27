@@ -429,9 +429,9 @@ namespace Charter.Controllers
 
         }
 
-        public ActionResult CalculateBaits(int id, CaptainsModel captainsModel)
+        public ActionResult CalculateBaits(int id)
         {
-            var baitToCalculate = _context.baits.Where(c => c.CaptainId == id).FirstOrDefault();
+            var baitToCalculate = _context.baits.Find(id);
             return View(baitToCalculate);
         }
         [HttpPost]
@@ -441,7 +441,7 @@ namespace Charter.Controllers
             try
             {
                 //calculate bait price per 
-                var bait = _context.baits.AsNoTracking().Where(b => b.CaptainId == id).FirstOrDefault();
+                var bait = _context.baits.AsNoTracking().Where(b => b.BaitId == id).FirstOrDefault();
                 baitsModel.BaitCost = bait.BaitPrice / bait.Amount;
                 baitsModel.PricePerDozen = 12 * baitsModel.BaitCost ;
                 _context.Update(baitsModel);
@@ -454,9 +454,9 @@ namespace Charter.Controllers
               return View();
             }
         }
-        public ActionResult CostDetails(int id, CaptainsModel captainsModel)
+        public ActionResult CostDetails(int id)
         {
-            var baits = _context.baits.Where(b => id == captainsModel.CaptainId).FirstOrDefault();
+            var baits = _context.baits.Find(id);
             return View(baits);
         }
 

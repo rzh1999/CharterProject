@@ -61,7 +61,9 @@
             <td>
                 <a asp-action="EditBait" asp-route-id="@item.BaitId">Edit</a> |
                 
-                <a asp-action="DeleteBait" asp-route-id="@item.BaitId">Delete</a>
+                <a asp-action="DeleteBait" asp-route-id="@item.BaitId">Delete</a> |
+                <a asp-action="CalculateBaits" asp-route-id="@item.BaitId">Calculate</a> |
+                <a asp-action="CostDetails" asp-route-id="@item.BaitId">Cost Details</a> |
             </td>
         </tr>
 }
